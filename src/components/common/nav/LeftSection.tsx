@@ -3,6 +3,8 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import { menuState } from "../../../states/menu";
+import hamburgermenu from "../../../../public/images/hamburgermenu.svg";
+import logo from "../../../../public/images/logo.svg";
 
 const LeftSection = () => {
   const setIsOpenMenu = useSetRecoilState(menuState);
@@ -14,10 +16,10 @@ const LeftSection = () => {
   return (
     <Wrap>
       <Button onClick={openMenu}>
-        <Icon src="images/hamburgermenu.svg" />
+        <Icon src={hamburgermenu} />
       </Button>
       <Button>
-        <Logo src="images/logo.svg" />
+        <Logo src={logo} />
         Metube
       </Button>
     </Wrap>

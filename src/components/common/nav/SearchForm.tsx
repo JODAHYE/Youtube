@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
+
 import close from "../../../../public/images/close.svg";
 import search from "../../../../public/images/search.svg";
 

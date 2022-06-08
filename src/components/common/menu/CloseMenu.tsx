@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import home from "../../../../public/images/home.svg";
 import compass from "../../../../public/images/compass.svg";
 import youtubeShorts from "../../../../public/images/youtubeShorts.svg";

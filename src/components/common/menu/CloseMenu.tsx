@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import home from "../../../../public/images/home.svg";
-import compass from "../../../../public/images/compass.svg";
-import youtubeShorts from "../../../../public/images/youtubeShorts.svg";
-import subscription from "../../../../public/images/subscription.svg";
-import store from "../../../../public/images/store.svg";
+import home from "@images/home.svg";
+import compass from "@images/compass.svg";
+import youtubeShorts from "@images/youtubeShorts.svg";
+import subscription from "@images/subscription.svg";
+import store from "@images/store.svg";
 
 const CloseMenu = () => {
   return (

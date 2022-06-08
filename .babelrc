@@ -6,6 +6,17 @@
     ],
     "@babel/react", //리액트도 컴파일될 수 있도록 설정
     "@babel/typescript" // 타입스크립트가 컴파일 될 수 있도록
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@images": "./public/images"
+        }
+      }
+    ]
   ]
 } //바벨로 컴파일 할 때, target을 지정
 //브라우저의 상위 버전 두개(예: IE 11, 10)와 한국(KR)에서 5% 이상의 점유율을 가지고 있는 브라우저에 대응하여 컴파일되도록 설정

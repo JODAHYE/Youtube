@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import notification from "../../../../public/images/notification.svg";
-import cloud from "../../../../public/images/cloud.jpg";
+import notification from "@images/notification.svg";
+import cloud from "@images/cloud.jpg";
 
 const RightSection = () => {
   return (

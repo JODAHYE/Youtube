@@ -3,8 +3,9 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import { menuState } from "../../../states/menu";
-import hamburgermenu from "../../../../public/images/hamburgermenu.svg";
-import logo from "../../../../public/images/logo.svg";
+
+import hamburgermenu from "@images/hamburgermenu.svg";
+import logo from "@images/logo.svg";
 
 const LeftSection = () => {
   const setIsOpenMenu = useSetRecoilState(menuState);

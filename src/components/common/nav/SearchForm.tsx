@@ -1,8 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 
-import close from "../../../../public/images/close.svg";
-import search from "../../../../public/images/search.svg";
+import close from "@images/close.svg";
+import search from "@images/search.svg";
 
 const SearchForm = () => {
   const [searchInput, setSearchInput] = useState("");

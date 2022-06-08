@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import Header from "../common/Nav/Nav";
 
 const Main = () => {
   useEffect(() => {
@@ -16,7 +17,11 @@ const Main = () => {
         console.log(res.data);
       });
   }, []);
-  return <div>메인페이지</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export default Main;

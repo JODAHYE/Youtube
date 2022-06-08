@@ -1,11 +1,15 @@
 import * as React from "react";
+import { ThemeProvider } from "styled-components";
 import Main from "./pages/Main";
+import GlobalStyle from "./style/GlobalStyle";
+import { theme } from "./style/theme";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Main />
-    </div>
+    </ThemeProvider>
   );
 }
 

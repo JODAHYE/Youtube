@@ -14,10 +14,10 @@ const LeftSection = () => {
   return (
     <Wrap>
       <Button onClick={openMenu}>
-        <Icon src="assets/hamburgermenu.svg" />
+        <Icon src="images/hamburgermenu.svg" />
       </Button>
       <Button>
-        <Logo src="assets/logo.svg" />
+        <Logo src="images/logo.svg" />
         Metube
       </Button>
     </Wrap>

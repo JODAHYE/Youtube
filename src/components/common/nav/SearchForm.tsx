@@ -1,9 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
-
-type StyledType = {
-  isActive: boolean;
-};
+import close from "../../../../public/images/close.svg";
+import search from "../../../../public/images/search.svg";
 
 const SearchForm = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -43,14 +41,14 @@ const SearchForm = () => {
       />
       {searchInput ? (
         <CloseButton onClick={clearSearchInput}>
-          <Icon src="assets/close.svg" />
+          <Icon src={close} />
         </CloseButton>
       ) : (
         <CloseButton />
       )}
 
       <SubmitButton onClick={getSearchResult}>
-        <Icon src="assets/search.svg" />
+        <Icon src={search} />
       </SubmitButton>
     </Form>
   );

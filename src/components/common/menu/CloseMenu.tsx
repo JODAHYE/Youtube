@@ -1,26 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+import home from "../../../../public/images/home.svg";
+import compass from "../../../../public/images/compass.svg";
+import youtubeShorts from "../../../../public/images/youtubeShorts.svg";
+import subscription from "../../../../public/images/subscription.svg";
+import store from "../../../../public/images/store.svg";
 
 const CloseMenu = () => {
   return (
     <Wrap>
       <MenuItem>
-        <Icon src="assets/home.svg" />홈
+        <Icon src={home} />홈
       </MenuItem>
       <MenuItem>
-        <Icon src="assets/compass.svg" />
+        <Icon src={compass} />
         탐색
       </MenuItem>
       <MenuItem>
-        <Icon src="assets/youtube-shorts.svg" />
+        <Icon src={youtubeShorts} />
         Shors
       </MenuItem>
       <MenuItem>
-        <Icon src="assets/subscription.svg" />
+        <Icon src={subscription} />
         구독
       </MenuItem>
       <MenuItem>
-        <Icon src="assets/store.svg" />
+        <Icon src={store} />
         보관함
       </MenuItem>
     </Wrap>

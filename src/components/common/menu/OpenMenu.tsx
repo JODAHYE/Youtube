@@ -1,40 +1,48 @@
 import React from "react";
 import styled from "styled-components";
+import home from "../../../../public/images/home.svg";
+import compass from "../../../../public/images/compass.svg";
+import history from "../../../../public/images/history.svg";
+import play from "../../../../public/images/play.svg";
+import store from "../../../../public/images/store.svg";
+import youtubeShorts from "../../../../public/images/youtubeShorts.svg";
+import subscription from "../../../../public/images/subscription.svg";
+import clock from "../../../../public/images/clock.svg";
 
 const OpenMenu = () => {
   return (
     <Wrap>
       <MenuSection>
         <MenuItem>
-          <Icon src="assets/home.svg" />홈
+          <Icon src={home} />홈
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/compass.svg" />
+          <Icon src={compass} />
           탐색
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/youtube-shorts.svg" />
+          <Icon src={youtubeShorts} />
           Shors
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/subscription.svg" />
+          <Icon src={subscription} />
           구독
         </MenuItem>
       </MenuSection>
       <MenuSection>
         <MenuItem>
-          <Icon src="assets/store.svg" />
+          <Icon src={store} />
           보관함
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/history.svg" />
+          <Icon src={history} />
           시청기록
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/play.svg" />내 동영상
+          <Icon src={play} />내 동영상
         </MenuItem>
         <MenuItem>
-          <Icon src="assets/clock.svg" />
+          <Icon src={clock} />
           나중에 볼 동영상
         </MenuItem>
       </MenuSection>

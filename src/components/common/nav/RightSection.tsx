@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+import notification from "../../../../public/images/notification.svg";
+import cloud from "../../../../public/images/cloud.jpg";
+
 const RightSection = () => {
   return (
     <Wrap>
       <Button>
-        <Icon src="assets/notification.svg" />
+        <Icon src={notification} />
       </Button>
-      <ProfileImage src="assets/cloud.jpg" />
+      <ProfileImage src={cloud} />
     </Wrap>
   );
 };

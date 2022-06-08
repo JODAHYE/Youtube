@@ -29,11 +29,11 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.svg$/, // .png 확장자로 마치는 모든 파일
+        test: /\\.svg$/,
         loader: "file-loader",
         options: {
-          publicPath: "./dist/assets/", // prefix를 아웃풋 경로로 지정
-          name: "[name].[ext]?[hash]", // 파일명 형식
+          publicPath: "./dist/",
+          name: "[name].[ext]?[hash]",
         },
       },
     ],

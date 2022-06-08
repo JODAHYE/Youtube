@@ -29,12 +29,15 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\\.svg$/,
-        loader: "file-loader",
-        options: {
-          publicPath: "./dist/",
-          name: "[name].[ext]?[hash]",
-        },
+        test: /\.(png|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "assets/[name].[ext]?[hash]",
+            },
+          },
+        ],
       },
     ],
   },

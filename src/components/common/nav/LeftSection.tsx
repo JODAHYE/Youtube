@@ -1,10 +1,19 @@
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
+import { menuState } from "../../../states/menu";
+
 const LeftSection = () => {
+  const setIsOpenMenu = useSetRecoilState(menuState);
+
+  const openMenu = () => {
+    setIsOpenMenu((prev) => !prev);
+  };
+
   return (
     <Wrap>
-      <Button>
+      <Button onClick={openMenu}>
         <Icon src="assets/hamburgermenu.svg" />
       </Button>
       <Button>
@@ -21,6 +30,7 @@ const Wrap = styled.div`
   display: flex;
   gap: 20px;
 `;
+
 const Icon = styled.img`
   height: 24px;
 `;

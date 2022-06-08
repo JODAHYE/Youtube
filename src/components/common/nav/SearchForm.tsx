@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 type StyledType = {
   isActive: boolean;

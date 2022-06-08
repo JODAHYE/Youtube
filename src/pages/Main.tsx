@@ -1,8 +1,15 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import Header from "../common/Nav/Nav";
+import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+
+import CloseMenu from "../components/common/menu/CloseMenu";
+import OpenMenu from "../components/common/menu/OpenMenu";
+import { menuState } from "../states/menu";
 
 const Main = () => {
+  const isOpenMenu = useRecoilValue(menuState);
+
   useEffect(() => {
     axios
       .get("https://www.googleapis.com/youtube/v3/playlistItems", {
@@ -17,11 +24,12 @@ const Main = () => {
         console.log(res.data);
       });
   }, []);
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <Wrap>{isOpenMenu ? <OpenMenu /> : <CloseMenu />}</Wrap>;
 };
 
 export default Main;
+
+const Wrap = styled.div`
+  min-height: 100vh;
+  background: ${(props) => props.theme.colors.lightGray};
+`;

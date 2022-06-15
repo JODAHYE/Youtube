@@ -1,35 +1,39 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
+import { mainVideoState } from "../states/videos";
 import CloseMenu from "../components/common/menu/CloseMenu";
 import OpenMenu from "../components/common/menu/OpenMenu";
 import { menuState } from "../states/menu";
+import { videoQuery } from "../queries/videoQuery";
+import Contents from "../components/main/Contents";
 
 const Main = () => {
+  const { mainVideoListQuery } = videoQuery();
+
   const isOpenMenu = useRecoilValue(menuState);
+  const mainVideoList = useRecoilValue(mainVideoState);
+  const setMainVideoState = useSetRecoilState(mainVideoState);
 
   useEffect(() => {
-    axios
-      .get("https://www.googleapis.com/youtube/v3/playlistItems", {
-        params: {
-          part: "snippet",
-          playlistId: "PLVbV9mqtfzKfge1I-S01Kw6HcP-j1E9Gr",
-          maxResults: "50",
-          key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-      });
-  }, []);
-  return <Wrap>{isOpenMenu ? <OpenMenu /> : <CloseMenu />}</Wrap>;
+    console.log(mainVideoList);
+  }, [mainVideoList]);
+
+  if (mainVideoListQuery.data) {
+    setMainVideoState(mainVideoListQuery.data.data.items);
+  }
+
+  return (
+    <Wrap>
+      {isOpenMenu ? <OpenMenu /> : <CloseMenu />} <Contents />
+    </Wrap>
+  );
 };
 
 export default Main;
 
 const Wrap = styled.div`
-  min-height: 100vh;
+  display: flex;
   background: ${(props) => props.theme.colors.lightGray};
 `;

@@ -1,54 +1,73 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-const MainViedoItem = ({ video }: any) => {
-  useEffect(() => {
-    console.log(video.thumbnails.high.url);
-  }, []);
+import simsonoe from "@images/simsonoe.jpg";
 
-  return (
-    <Wrap>
-      <Thumbnail src={video.thumbnails.high.url} />
-      <InfoBox>
-        <TextBox>
-          <Title>{video.title}</Title>
-          <Info>{video.videoOwnerChannelTitle}</Info>
-          <Info>{video.publishedAt}</Info>
-        </TextBox>
-      </InfoBox>
-    </Wrap>
-  );
+const MainViedoItem = ({ video }: any) => {
+    useEffect(() => {
+        console.log(video.thumbnails.high.url);
+    }, []);
+
+    return (
+        <Wrap>
+            <Thumbnail src={video.thumbnails.high.url} />
+            <MainInfo>
+                <ProfileImg src={simsonoe} />
+                <Title>{video.title}</Title>
+            </MainInfo>
+            <SubInfo>
+                <Info>{video.videoOwnerChannelTitle}</Info>
+                <Info>{video.publishedAt}</Info>
+            </SubInfo>
+        </Wrap>
+    );
 };
 
 export default MainViedoItem;
 
 const Wrap = styled.div`
-  width: 310px;
-  height: 290px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-  cursor: pointer;
+    width: 320px;
+    height: 290px;
+
+    cursor: pointer;
 `;
 
 const Thumbnail = styled.img`
-  width: 100%;
-  height: 180px;
+    width: 100%;
+    height: 180px;
 `;
 
-const InfoBox = styled.div`
-  display: flex;
+const MainInfo = styled.div`
+    display: flex;
+    gap: 10px;
 `;
 
-const TextBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+const SubInfo = styled.div``;
+
+const ProfileImg = styled.img`
+    border-radius: 50%;
+    width: 100px;
 `;
 
 const Title = styled.p`
-  font-size: 1rem;
-  line-height: 1.2em;
+    font-size: 1rem;
+    line-height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 2.4em;
+    white-space: pre-wrap;
 `;
 
 const Info = styled.p`
-  font-size: 0.9375rem;
+    font-size: 0.9375rem;
+    padding-left: 40px;
+    line-height: 1.4em;
 `;

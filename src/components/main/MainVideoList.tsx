@@ -1,13 +1,19 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import { menuState } from "../../states/menu";
 import styled from "styled-components";
 import { mainVideoState } from "../../states/videos";
 import MainViedoItem from "./MainViedoItem";
 
+type StyledType = {
+  isOpenMenu: boolean;
+};
+
 const MainVideoList = () => {
+  const isOpenMenu = useRecoilValue(menuState);
   const mainVideoList = useRecoilValue(mainVideoState);
   return (
-    <Wrap>
+    <Wrap isOpenMenu={isOpenMenu}>
       {mainVideoList.map((video, i) => (
         <MainViedoItem key={i} video={video.snippet} />
       ))}
@@ -17,16 +23,14 @@ const MainVideoList = () => {
 
 export default MainVideoList;
 
-const Wrap = styled.div`
+const Wrap = styled.div<StyledType>`
+  width: ${(props) => (props.isOpenMenu ? "96%" : "100%")};
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 
-  width: 100vw;
-  height: 100vh;
-
+  margin: 0 auto;
   padding: 30px 0;
-
-  overflow: auto;
 `;

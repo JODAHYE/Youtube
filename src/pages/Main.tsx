@@ -11,35 +11,48 @@ import VideoAPI from "../lib/api/VideoAPI";
 import MainVideoList from "../components/main/MainVideoList";
 import FilterTagList from "../components/main/FilterTagList";
 
+type StyledType = {
+    isOpenMenu: boolean;
+};
+
 const Main = () => {
-  const isOpenMenu = useRecoilValue(menuState);
-  const setMainVideoState = useSetRecoilState(mainVideoState);
+    const isOpenMenu = useRecoilValue(menuState);
+    const setMainVideoState = useSetRecoilState(mainVideoState);
 
-  const { data } = useQuery("mainVideoList", () => {
-    return VideoAPI.getMainVideoList();
-  });
+    const { data } = useQuery("mainVideoList", () => {
+        return VideoAPI.getMainVideoList();
+    });
 
-  useEffect(() => {
-    if (data) {
-      console.log(data.data.items);
-      setMainVideoState(data.data.items);
-    }
-  }, [data]);
+    useEffect(() => {
+        if (data) {
+            console.log(data.data.items);
+            setMainVideoState(data.data.items);
+        }
+    }, [data]);
 
-  return (
-    <Wrap>
-      {isOpenMenu ? <OpenMenu /> : <CloseMenu />}
-      <div>
-        <FilterTagList />
-        <MainVideoList />
-      </div>
-    </Wrap>
-  );
+    return (
+        <Wrap>
+            {isOpenMenu ? <OpenMenu /> : <CloseMenu />}
+            <MainContainer>
+                <FilterTagList />
+                <MainVideoList />
+            </MainContainer>
+        </Wrap>
+    );
 };
 
 export default Main;
 
 const Wrap = styled.div`
-  display: flex;
-  background: ${(props) => props.theme.colors.lightGray};
+    width: 100%;
+    display: flex;
+    background: ${(props) => props.theme.colors.lightGray};
+`;
+
+const MainContainer = styled.div<StyledType>`
+    width: 100%;
+    height: 100vh;
+
+    overflow-y: auto;
+    padding-bottom: 50px;
 `;

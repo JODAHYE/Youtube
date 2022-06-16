@@ -50,4 +50,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin(),
     new Dotenv(),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };

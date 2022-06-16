@@ -11,4 +11,14 @@ export default class VideoAPI {
       },
     });
   }
+
+  static async getSearchVideoList(searchValue: string) {
+    return axiosInstance.get("/v3/search", {
+      params: {
+        part: "snippet",
+        q: searchValue,
+        key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
+      },
+    });
+  }
 }

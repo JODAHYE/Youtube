@@ -1,32 +1,38 @@
 import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { useQuery } from "react-query";
 
 import { mainVideoState } from "../states/videos";
 import CloseMenu from "../components/common/menu/CloseMenu";
 import OpenMenu from "../components/common/menu/OpenMenu";
 import { menuState } from "../states/menu";
-import { videoQuery } from "../queries/videoQuery";
-import Contents from "../components/main/Contents";
+import VideoAPI from "../lib/api/VideoAPI";
+import MainVideoList from "../components/main/MainVideoList";
+import FilterTagList from "../components/main/FilterTagList";
 
 const Main = () => {
-  const { mainVideoListQuery } = videoQuery();
-
   const isOpenMenu = useRecoilValue(menuState);
-  const mainVideoList = useRecoilValue(mainVideoState);
   const setMainVideoState = useSetRecoilState(mainVideoState);
 
-  useEffect(() => {
-    console.log(mainVideoList);
-  }, [mainVideoList]);
+  const { data } = useQuery("mainVideoList", () => {
+    return VideoAPI.getMainVideoList();
+  });
 
-  if (mainVideoListQuery.data) {
-    setMainVideoState(mainVideoListQuery.data.data.items);
-  }
+  useEffect(() => {
+    if (data) {
+      console.log(data.data.items);
+      setMainVideoState(data.data.items);
+    }
+  }, [data]);
 
   return (
     <Wrap>
-      {isOpenMenu ? <OpenMenu /> : <CloseMenu />} <Contents />
+      {isOpenMenu ? <OpenMenu /> : <CloseMenu />}
+      <div>
+        <FilterTagList />
+        <MainVideoList />
+      </div>
     </Wrap>
   );
 };

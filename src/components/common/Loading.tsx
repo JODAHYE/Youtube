@@ -1,7 +1,7 @@
 import React from "react";
 
-const Item = () => {
+const Loading = () => {
   return <div></div>;
 };
 
-export default Item;
+export default Loading;

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { searchState, searchVideoState } from "../../../states/search";
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { searchVideoState } from "../../../states/videos";
 import styled from "styled-components";
 import SearchViedoItem from "./SearchViedoItem";
 
@@ -10,10 +10,7 @@ const SearchVideoList = () => {
     return (
         <Wrap>
             {searchVideoList.map((video, i) => (
-                <SearchViedoItem
-                    key={video.id.videoId + i}
-                    video={video.snippet}
-                />
+                <SearchViedoItem key={video.id.videoId + i} video={video} />
             ))}
         </Wrap>
     );

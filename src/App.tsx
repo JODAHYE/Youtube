@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 
@@ -19,7 +19,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="results*" element={<Search />} />
-                    <Route path="play" element={<Play />} />
+                    <Route path="play*" element={<Play />} />
                 </Routes>
             </ThemeProvider>
         </RecoilRoot>

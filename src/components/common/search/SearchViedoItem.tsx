@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import simsonoe from "@images/simsonoe.jpg";
+import { useNavigate } from "react-router";
+import { useSetRecoilState } from "recoil";
+import { playVideoIdState } from "../../../states/videos";
 
 const SearchViedoItem = ({ video }: any) => {
+    const navigate = useNavigate();
+
+    const setPlayVideoId = useSetRecoilState(playVideoIdState);
+
+    const onPlayVideo = () => {
+        setPlayVideoId(video.id.videoId);
+        navigate(
+            `/play?v=${video.id.videoId}&ad_channel=${video.snippet.channelId}`
+        );
+    };
+
     return (
-        <Wrap>
-            <Thumbnail src={video.thumbnails.high.url} />
+        <Wrap onClick={onPlayVideo}>
+            <Thumbnail src={video.snippet.thumbnails.high.url} />
             <InfoBox>
-                <Title>{video.title}</Title>
-                <Info>{video.publishTime}</Info>
+                <Title>{video.snippet.title}</Title>
+                <Info>{video.snippet.publishTime}</Info>
                 <Profile>
                     <ProfileImg src={simsonoe} />
-                    <Info>{video.channelTitle}</Info>
+                    <Info>{video.snippet.channelTitle}</Info>
                 </Profile>
-                <Info>{video.description}</Info>
+                <Info>{video.snippet.description}</Info>
             </InfoBox>
         </Wrap>
     );
@@ -26,6 +40,8 @@ const Wrap = styled.div`
     width: 60%;
     display: flex;
     gap: 20px;
+
+    cursor: pointer;
 `;
 
 const Thumbnail = styled.img`

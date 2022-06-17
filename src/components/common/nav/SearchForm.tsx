@@ -1,19 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router";
-import { useSetRecoilState } from "recoil";
-
 import close from "@images/close.svg";
 import search from "@images/search.svg";
-import { searchState } from "../../../states/search";
 
 const SearchForm = () => {
     const [searchInput, setSearchInput] = useState("");
 
-    const setSearchState = useSetRecoilState(searchState);
-
     const inputRef = useRef(null);
-    const navigate = useNavigate();
 
     const searchInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +28,8 @@ const SearchForm = () => {
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         e.preventDefault();
-        setSearchState(searchInput);
-        navigate(`/results?search_query=${searchInput}`);
+        localStorage.setItem("searchValue", searchInput);
+        window.location.replace(`/results?search_query=${searchInput}`);
     };
 
     return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { searchState, searchVideoState } from "../states/search";
+import { searchVideoState } from "../states/videos";
 import CloseMenu from "../components/common/menu/CloseMenu";
 import OpenMenu from "../components/common/menu/OpenMenu";
 import { menuState } from "../states/menu";
@@ -11,19 +11,18 @@ import VideoAPI from "../lib/api/VideoAPI";
 
 const Search = () => {
     const isOpenMenu = useRecoilValue(menuState);
-    const searchValue = useRecoilValue(searchState);
     const setSearchVideoState = useSetRecoilState(searchVideoState);
 
     const { data } = useQuery("saerchVideoList", () => {
-        return VideoAPI.getSearchVideoList(searchValue);
+        return VideoAPI.getSearchVideoList(localStorage.getItem("searchValue"));
     });
 
     useEffect(() => {
         if (data) {
-            console.log(data.data.items);
             setSearchVideoState(data.data.items);
         }
-    }, [data, searchValue]);
+    }, [data]);
+
     return (
         <Wrap>
             {isOpenMenu ? <OpenMenu /> : <CloseMenu />}

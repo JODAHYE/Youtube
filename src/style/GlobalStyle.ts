@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     ${reset}
     html, body, * {
         overflow: hidden;
-        font-size: 14px;
+        font-size: 16px;
         box-sizing: border-box;
         padding: 0;
         margin: 0;

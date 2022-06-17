@@ -11,10 +11,6 @@ import VideoAPI from "../lib/api/VideoAPI";
 import MainVideoList from "../components/main/MainVideoList";
 import FilterTagList from "../components/main/FilterTagList";
 
-type StyledType = {
-    isOpenMenu: boolean;
-};
-
 const Main = () => {
     const isOpenMenu = useRecoilValue(menuState);
     const setMainVideoState = useSetRecoilState(mainVideoState);
@@ -25,7 +21,6 @@ const Main = () => {
 
     useEffect(() => {
         if (data) {
-            console.log(data.data.items);
             setMainVideoState(data.data.items);
         }
     }, [data]);
@@ -49,7 +44,7 @@ const Wrap = styled.div`
     background: ${(props) => props.theme.colors.lightGray};
 `;
 
-const MainContainer = styled.div<StyledType>`
+const MainContainer = styled.div`
     width: 100%;
     height: 100vh;
 

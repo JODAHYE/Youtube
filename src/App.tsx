@@ -11,21 +11,19 @@ import GlobalStyle from "./style/GlobalStyle";
 import { theme } from "./style/theme";
 
 function App() {
-  return (
-    <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Nav />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="search" element={<Search />} />
-            <Route path="play" element={<Play />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </RecoilRoot>
-  );
+    return (
+        <RecoilRoot>
+            <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Nav />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="results*" element={<Search />} />
+                    <Route path="play" element={<Play />} />
+                </Routes>
+            </ThemeProvider>
+        </RecoilRoot>
+    );
 }
 
 export default App;

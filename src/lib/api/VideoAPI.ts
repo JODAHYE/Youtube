@@ -17,7 +17,7 @@ export default class VideoAPI {
             params: {
                 part: "snippet",
                 q: searchValue,
-                maxResults: "20",
+                maxResults: "1",
                 key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });
@@ -28,7 +28,7 @@ export default class VideoAPI {
             params: {
                 part: "snippet",
                 q: channelId,
-                maxResults: "20",
+                maxResults: "5",
                 key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });

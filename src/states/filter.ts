@@ -9,3 +9,8 @@ export const searchInputState = atom<string>({
     key: "searchInputState",
     default: "",
 });
+
+export const playChannelId = atom<string>({
+    key: "playChannelId",
+    default: "",
+});

@@ -1,7 +1,8 @@
 import React from "react";
+import { SearchVideoType } from "src/states/videoType";
 import styled from "styled-components";
 
-const PlaySubItem = ({ video }: any) => {
+const PlaySubItem = ({ video }: { video: SearchVideoType }) => {
     return (
         <Wrap>
             <InfoBox>

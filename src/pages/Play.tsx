@@ -1,17 +1,18 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import { playChannelId } from "../states/filter";
 import styled from "styled-components";
 
-import { subVideoState } from "../states/videos";
 import PlayMainContainert from "../components/play/PlayMainContainert";
 import PlaySubContainer from "../components/play/PlaySubContainer";
 
 const Play = () => {
-    const subVideoListData = useRecoilValue(subVideoState);
+    const playChannelIdValue = useRecoilValue(playChannelId);
+
     return (
         <Wrap>
             <PlayMainContainert />
-            {subVideoListData && <PlaySubContainer />}
+            {playChannelIdValue && <PlaySubContainer />}
         </Wrap>
     );
 };

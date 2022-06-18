@@ -12,7 +12,7 @@ type ThumbnailType = {
     standard?: ThumbnailInfoType;
 };
 
-export type SearchVideoTtype = {
+export type SearchVideoType = {
     etag: string;
     id: {
         kind: string;
@@ -40,6 +40,10 @@ export type MainVideoType = {
         channelTitle: string;
         description: string;
         playListId: string;
+        resourceId: {
+            kind: string;
+            videoId: string;
+        };
         positon: string;
         publishedAt: string;
         thumbnails: ThumbnailType;

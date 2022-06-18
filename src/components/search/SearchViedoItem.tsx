@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import simsonoe from "@images/simsonoe.jpg";
 import { useNavigate } from "react-router";
+import { SearchVideoType } from "../../states/videoType";
 
-const SearchViedoItem = ({ video }: any) => {
+const SearchViedoItem = ({ video }: { video: SearchVideoType }) => {
     const navigate = useNavigate();
 
     const onPlayVideo = () => {

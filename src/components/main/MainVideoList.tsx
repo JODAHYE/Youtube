@@ -26,14 +26,10 @@ const MainVideoList = () => {
         return VideoAPI.getMainVideoList(mainTagValue);
     });
 
-    useEffect(() => {
-        console.log(data?.data.items);
-    }, [data]);
-
     return (
         <Wrap isOpenMenu={isOpenMenu}>
             {data?.data.items.map((video, i) => (
-                <MainViedoItem key={video.id + i} video={video.snippet} />
+                <MainViedoItem key={video.id + i} video={video} />
             ))}
         </Wrap>
     );

@@ -5,11 +5,11 @@ import { useQuery } from "react-query";
 import VideoAPI from "../../lib/api/VideoAPI";
 import { useRecoilValue } from "recoil";
 import { searchInputState } from "../../states/filter";
-import { SearchVideoTtype } from "src/states/videoType";
+import { SearchVideoType } from "src/states/videoType";
 
 type DataType = {
     data: {
-        items: SearchVideoTtype[];
+        items: SearchVideoType[];
     };
 };
 

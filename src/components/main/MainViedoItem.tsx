@@ -3,26 +3,27 @@ import styled from "styled-components";
 
 import simsonoe from "@images/simsonoe.jpg";
 import { useNavigate } from "react-router";
+import { MainVideoType } from "../../states/videoType";
 
-const MainViedoItem = ({ video }: any) => {
+const MainViedoItem = ({ video }: { video: MainVideoType }) => {
     const navigate = useNavigate();
 
     const onPlayVideo = () => {
         navigate(
-            `/play?v=${video.resourceId.videoId}&ad_channel=${video.channelId}`
+            `/play?v=${video.snippet.resourceId.videoId}&ad_channel=${video.snippet.channelId}`
         );
     };
 
     return (
         <Wrap onClick={onPlayVideo}>
-            <Thumbnail src={video.thumbnails.high.url} />
+            <Thumbnail src={video.snippet.thumbnails.high.url} />
             <MainInfo>
                 <ProfileImg src={simsonoe} />
-                <Title>{video.title}</Title>
+                <Title>{video.snippet.title}</Title>
             </MainInfo>
             <SubInfo>
-                <Info>{video.videoOwnerChannelTitle}</Info>
-                <Info>{video.publishedAt}</Info>
+                <Info>{video.snippet.videoOwnerChannelTitle}</Info>
+                <Info>{video.snippet.publishedAt}</Info>
             </SubInfo>
         </Wrap>
     );

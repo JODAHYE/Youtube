@@ -1,15 +1,21 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
-import { searchVideoState } from "../../../states/videos";
 import styled from "styled-components";
 import SearchViedoItem from "./SearchViedoItem";
+import { useQuery } from "react-query";
+import VideoAPI from "../../lib/api/VideoAPI";
+import { useRecoilValue } from "recoil";
+import { searchInputState } from "../../states/filter";
 
 const SearchVideoList = () => {
-    const searchVideoList = useRecoilValue(searchVideoState);
+    const searchInputValue = useRecoilValue(searchInputState);
+
+    const { data } = useQuery(searchInputValue, () => {
+        return VideoAPI.getSearchVideoList(searchInputValue);
+    });
 
     return (
         <Wrap>
-            {searchVideoList.map((video, i) => (
+            {data?.data.items.map((video, i) => (
                 <SearchViedoItem key={video.id.videoId + i} video={video} />
             ))}
         </Wrap>

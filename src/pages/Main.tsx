@@ -1,36 +1,23 @@
-import React, { useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { useQuery } from "react-query";
-
-import { mainVideoState } from "../states/videos";
 import CloseMenu from "../components/common/menu/CloseMenu";
 import OpenMenu from "../components/common/menu/OpenMenu";
 import { menuState } from "../states/menu";
-import VideoAPI from "../lib/api/VideoAPI";
 import MainVideoList from "../components/main/MainVideoList";
 import FilterTagList from "../components/main/FilterTagList";
+import { mainTagState } from "../states/filter";
 
 const Main = () => {
     const isOpenMenu = useRecoilValue(menuState);
-    const setMainVideoState = useSetRecoilState(mainVideoState);
-
-    const { data } = useQuery("mainVideoList", () => {
-        return VideoAPI.getMainVideoList();
-    });
-
-    useEffect(() => {
-        if (data) {
-            setMainVideoState(data.data.items);
-        }
-    }, [data]);
+    const mainTagValue = useRecoilValue(mainTagState);
 
     return (
         <Wrap>
             {isOpenMenu ? <OpenMenu /> : <CloseMenu />}
             <MainContainer>
                 <FilterTagList />
-                <MainVideoList />
+                {mainTagValue && <MainVideoList />}
             </MainContainer>
         </Wrap>
     );

@@ -1,33 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { searchVideoState } from "../states/videos";
-import CloseMenu from "../components/common/menu/CloseMenu";
-import OpenMenu from "../components/common/menu/OpenMenu";
+import { useRecoilValue } from "recoil";
+
 import { menuState } from "../states/menu";
-import SearchVideoList from "../components/common/search/SearchVideoList";
-import { useQuery } from "react-query";
-import VideoAPI from "../lib/api/VideoAPI";
+import OpenMenu from "../components/common/menu/OpenMenu";
+import CloseMenu from "../components/common/menu/CloseMenu";
+import SearchVideoList from "../components/search/SearchVideoList";
+import { searchInputState } from "../states/filter";
 
 const Search = () => {
     const isOpenMenu = useRecoilValue(menuState);
-    const setSearchVideoState = useSetRecoilState(searchVideoState);
-
-    const { data } = useQuery("saerchVideoList", () => {
-        return VideoAPI.getSearchVideoList(localStorage.getItem("searchValue"));
-    });
-
-    useEffect(() => {
-        if (data) {
-            setSearchVideoState(data.data.items);
-        }
-    }, [data]);
+    const searchInputValue = useRecoilValue(searchInputState);
 
     return (
         <Wrap>
             {isOpenMenu ? <OpenMenu /> : <CloseMenu />}
             <SearchContainer>
-                <SearchVideoList />
+                {searchInputValue && <SearchVideoList />}
             </SearchContainer>
         </Wrap>
     );

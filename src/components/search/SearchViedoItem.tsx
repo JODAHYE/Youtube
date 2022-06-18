@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import simsonoe from "@images/simsonoe.jpg";
 import { useNavigate } from "react-router";
-import { useSetRecoilState } from "recoil";
-import { playVideoIdState } from "../../../states/videos";
 
 const SearchViedoItem = ({ video }: any) => {
     const navigate = useNavigate();
 
-    const setPlayVideoId = useSetRecoilState(playVideoIdState);
-
     const onPlayVideo = () => {
-        setPlayVideoId(video.id.videoId);
         navigate(
             `/play?v=${video.id.videoId}&ad_channel=${video.snippet.channelId}`
         );

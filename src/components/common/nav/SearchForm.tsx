@@ -2,35 +2,42 @@ import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import close from "@images/close.svg";
 import search from "@images/search.svg";
+import { useNavigate } from "react-router";
+import { useSetRecoilState } from "recoil";
+import { searchInputState } from "../../../states/filter";
 
 const SearchForm = () => {
-    const [searchInput, setSearchInput] = useState("");
-
+    const navigate = useNavigate();
     const inputRef = useRef(null);
+
+    const [searchInput, setSearchInput] = useState("");
+    const setSearchInputState = useSetRecoilState(searchInputState);
 
     const searchInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             setSearchInput(e.target.value);
         },
-        []
+        [searchInput]
     );
 
     const clearSearchInput = useCallback(
         (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             setSearchInput("");
+            setSearchInputState("");
             inputRef.current.focus();
         },
-        []
+        [searchInput]
     );
 
-    const getSearchResult = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        e.preventDefault();
-        localStorage.setItem("searchValue", searchInput);
-        window.location.replace(`/results?search_query=${searchInput}`);
-    };
+    const getSearchResult = useCallback(
+        (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            e.preventDefault();
+            setSearchInputState(searchInput);
+            navigate(`/results?search_query=${searchInput}`);
+        },
+        [searchInput]
+    );
 
     return (
         <Form>

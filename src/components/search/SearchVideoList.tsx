@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import SearchViedoItem from "./SearchViedoItem";
 import { useQuery } from "react-query";
 import VideoAPI from "../../lib/api/VideoAPI";
 import { useRecoilValue } from "recoil";
 import { searchInputState } from "../../states/filter";
+import { SearchVideoTtype } from "src/states/videoType";
+
+type DataType = {
+    data: {
+        items: SearchVideoTtype[];
+    };
+};
 
 const SearchVideoList = () => {
     const searchInputValue = useRecoilValue(searchInputState);
 
-    const { data } = useQuery(searchInputValue, () => {
+    const { data }: { data: DataType } = useQuery(searchInputValue, () => {
         return VideoAPI.getSearchVideoList(searchInputValue);
     });
+
+    useEffect(() => {
+        console.log(data?.data.items);
+    }, [data]);
 
     return (
         <Wrap>

@@ -22,4 +22,15 @@ export default class VideoAPI {
             },
         });
     }
+
+    static async getChannelVideoList(channelId: string) {
+        return axiosInstance.get("/search", {
+            params: {
+                part: "snippet",
+                q: channelId,
+                maxResults: "20",
+                key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
+            },
+        });
+    }
 }

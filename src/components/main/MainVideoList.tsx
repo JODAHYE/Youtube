@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { menuState } from "../../states/menu";
 import styled from "styled-components";
@@ -6,6 +6,13 @@ import { mainTagState } from "../../states/filter";
 import MainViedoItem from "./MainViedoItem";
 import { useQuery } from "react-query";
 import VideoAPI from "../../lib/api/VideoAPI";
+import { MainVideoType } from "src/states/videoType";
+
+type DataType = {
+    data: {
+        items: MainVideoType[];
+    };
+};
 
 type StyledType = {
     isOpenMenu: boolean;
@@ -15,17 +22,18 @@ const MainVideoList = () => {
     const isOpenMenu = useRecoilValue(menuState);
     const mainTagValue = useRecoilValue(mainTagState);
 
-    const { data } = useQuery(mainTagValue, () => {
+    const { data }: { data: DataType } = useQuery(mainTagValue, () => {
         return VideoAPI.getMainVideoList(mainTagValue);
     });
+
+    useEffect(() => {
+        console.log(data?.data.items);
+    }, [data]);
 
     return (
         <Wrap isOpenMenu={isOpenMenu}>
             {data?.data.items.map((video, i) => (
-                <MainViedoItem
-                    key={video.id.videoId + i}
-                    video={video.snippet}
-                />
+                <MainViedoItem key={video.id + i} video={video.snippet} />
             ))}
         </Wrap>
     );

@@ -40,8 +40,9 @@ const Wrap = styled.div`
 `;
 
 const Thumbnail = styled.img`
-    width: 380px;
+    min-width: 380px;
     height: 240px;
+    border: 1px solid red;
 `;
 
 const InfoBox = styled.div`

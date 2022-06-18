@@ -12,6 +12,8 @@ const FilterTagList = () => {
                 setMainTagState("PLVbV9mqtfzKfge1I-S01Kw6HcP-j1E9Gr");
             } else if (e.target.innerText === "동물") {
                 setMainTagState("PLNIjMXUSckVHnCINxUx0Al3iRRXkEDz_u");
+            } else if (e.target.innerText === "애니메이션") {
+                setMainTagState("PLWMeIWFG9hCIpfEflxjJDyZBYvvwmIFKP");
             }
         },
         [mainTagState]
@@ -19,7 +21,7 @@ const FilterTagList = () => {
     return (
         <Wrap>
             <Tag onClick={onFilter}>예능</Tag>
-            <Tag>애니메이션</Tag>
+            <Tag onClick={onFilter}>애니메이션</Tag>
             <Tag onClick={onFilter}>동물</Tag>
         </Wrap>
     );

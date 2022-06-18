@@ -1,14 +1,17 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
+import { subVideoState } from "../states/videos";
 import PlayMainContainert from "../components/play/PlayMainContainert";
 import PlaySubContainer from "../components/play/PlaySubContainer";
 
 const Play = () => {
+    const subVideoListData = useRecoilValue(subVideoState);
     return (
         <Wrap>
             <PlayMainContainert />
-            <PlaySubContainer />
+            {subVideoListData && <PlaySubContainer />}
         </Wrap>
     );
 };

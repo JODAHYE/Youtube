@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const menuState = atom({
-  key: "menuState",
-  default: false,
+export const menuState = atom<boolean>({
+    key: "menuState",
+    default: false,
 });

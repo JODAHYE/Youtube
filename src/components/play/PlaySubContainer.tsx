@@ -20,9 +20,9 @@ const PlaySubContainer = () => {
         return VideoAPI.getChannelVideoList(playChannelIdValue);
     });
 
-    useEffect(() => {
-        console.log("플래이", data?.data.items);
-    }, [data]);
+    // useEffect(() => {
+    //     console.log("플래이", data?.data.items);
+    // }, [data]);
 
     return (
         <Wrap>
@@ -36,6 +36,9 @@ const PlaySubContainer = () => {
 export default PlaySubContainer;
 
 const Wrap = styled.div`
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
     width: 420px;
 `;

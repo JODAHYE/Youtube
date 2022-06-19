@@ -4,11 +4,16 @@ import styled from "styled-components";
 import simsonoe from "@images/simsonoe.jpg";
 import { useNavigate } from "react-router";
 import { MainVideoType } from "../../states/videoType";
+import { playingVideoState } from "../../states/video";
+import { useSetRecoilState } from "recoil";
 
 const MainViedoItem = ({ video }: { video: MainVideoType }) => {
     const navigate = useNavigate();
 
+    const setPlayingVideoState = useSetRecoilState(playingVideoState);
+
     const onPlayVideo = () => {
+        setPlayingVideoState(video);
         navigate(
             `/play?v=${video.snippet.resourceId.videoId}&ad_channel=${video.snippet.channelId}`
         );
@@ -18,7 +23,7 @@ const MainViedoItem = ({ video }: { video: MainVideoType }) => {
         <Wrap onClick={onPlayVideo}>
             <Thumbnail src={video.snippet.thumbnails.high.url} />
             <MainInfo>
-                <ProfileImg src={simsonoe} />
+                <ProfileImg src={simsonoe} alt="프로필 이미지" />
                 <Title>{video.snippet.title}</Title>
             </MainInfo>
             <SubInfo>

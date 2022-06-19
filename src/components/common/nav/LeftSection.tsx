@@ -33,6 +33,7 @@ export default LeftSection;
 const Wrap = styled.div`
     display: flex;
     gap: 20px;
+    background: #fff;
 `;
 
 const Icon = styled.img`

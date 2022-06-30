@@ -14,7 +14,7 @@ const CloseMenu = () => {
             <MenuItem to="/">
                 <Icon src={home} />홈
             </MenuItem>
-            <MenuItem to="/">
+            <MenuItem to="/search">
                 <Icon src={compass} />
                 탐색
             </MenuItem>

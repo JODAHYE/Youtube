@@ -1,36 +1,37 @@
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
-import { useLocation } from "react-router";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 
-import { CommentType } from "../../states/CommentType";
+import { CommentType } from "../../states/commentType";
 import CommentAPI from "../../lib/api/CommentAPI";
+import CommentItem from "./CommentItem";
+import { commentState } from "../../states/comment";
 
 type DataType = {
-    data: {
-        items: CommentType[];
-    };
+    items: CommentType[];
 };
 
 const CommentList = () => {
-    const location = useLocation();
+    const commentListValue = useRecoilValue<DataType>(commentState);
 
-    const playVieoId = location.search.split("&")[0].substring(3);
-
-    const { data }: { data: DataType } = useQuery(
-        `comment+${playVieoId}`,
-        () => {
-            return CommentAPI.getPlayVideoCommentList(playVieoId);
-        }
+    return (
+        <Wrap>
+            {commentListValue?.items.map((comment, i) => (
+                <CommentItem
+                    key={comment.id}
+                    comment={comment.snippet.topLevelComment.snippet}
+                />
+            ))}
+        </Wrap>
     );
-
-    useEffect(() => {
-        console.log("플래이", data?.data.items);
-    }, [data]);
-
-    return <Wrap>{}</Wrap>;
 };
 
 export default CommentList;
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px 0;
+`;

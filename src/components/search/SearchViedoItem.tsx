@@ -6,14 +6,19 @@ import { useNavigate } from "react-router";
 import { SearchVideoType } from "../../states/videoType";
 import { useSetRecoilState } from "recoil";
 import { playingVideoState } from "../../states/video";
+import { playChannelId, playVideoId } from "../../states/filter";
 
 const SearchViedoItem = ({ video }: { video: SearchVideoType }) => {
     const navigate = useNavigate();
 
     const setPlayingVideoState = useSetRecoilState(playingVideoState);
+    const setPlayVideoId = useSetRecoilState(playVideoId);
+    const setPlayChannelId = useSetRecoilState(playChannelId);
 
     const onPlayVideo = () => {
         setPlayingVideoState(video);
+        setPlayVideoId(video.id.videoId);
+        setPlayChannelId(video.snippet.channelId);
         navigate(
             `/play?v=${video.id.videoId}&ad_channel=${video.snippet.channelId}`
         );

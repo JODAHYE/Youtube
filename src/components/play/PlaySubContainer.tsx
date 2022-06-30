@@ -4,29 +4,20 @@ import { useRecoilValue } from "recoil";
 import VideoAPI from "../../lib/api/VideoAPI";
 import { playChannelId } from "../../states/filter";
 import styled from "styled-components";
-import { SearchVideoType } from "src/states/videoType";
+import { SearchVideoType } from "../../states/videoType";
 import PlaySubItem from "./PlaySubItem";
+import { subVideoState } from "../../states/video";
 
 type DataType = {
-    data: {
-        items: SearchVideoType[];
-    };
+    items: SearchVideoType[];
 };
 
 const PlaySubContainer = () => {
-    const playChannelIdValue = useRecoilValue(playChannelId);
-
-    const { data }: { data: DataType } = useQuery(playChannelIdValue, () => {
-        return VideoAPI.getChannelVideoList(playChannelIdValue);
-    });
-
-    // useEffect(() => {
-    //     console.log("플래이", data?.data.items);
-    // }, [data]);
+    const subVideoListValue = useRecoilValue<DataType>(subVideoState);
 
     return (
         <Wrap>
-            {data?.data.items.map((video, i) => (
+            {subVideoListValue?.items.map((video, i) => (
                 <PlaySubItem key={video.id.videoId + i} video={video} />
             ))}
         </Wrap>
@@ -40,5 +31,7 @@ const Wrap = styled.div`
     flex-direction: column;
     gap: 6px;
 
-    width: 420px;
+    min-width: 340px;
+    width: 340px;
+    max-width: 340px;
 `;

@@ -14,3 +14,8 @@ export const playChannelId = atom<string>({
     key: "playChannelId",
     default: "",
 });
+
+export const playVideoId = atom<string>({
+    key: "playVideoId",
+    default: "",
+});

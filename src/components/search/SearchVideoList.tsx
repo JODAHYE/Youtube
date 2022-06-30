@@ -20,14 +20,10 @@ const SearchVideoList = () => {
         return VideoAPI.getSearchVideoList(searchInputValue);
     });
 
-    useEffect(() => {
-        console.log(data?.data.items);
-    }, [data]);
-
     return (
         <Wrap>
             {data?.data.items.map((video, i) => (
-                <SearchViedoItem key={video.id.videoId + i} video={video} />
+                <SearchViedoItem key={video.id.videoId} video={video} />
             ))}
         </Wrap>
     );

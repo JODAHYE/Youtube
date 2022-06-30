@@ -1,4 +1,4 @@
-type TopLevelCommentSnippetType = {
+export type TopLevelCommentSnippetType = {
     authorChannelId: {
         value: string;
     };

@@ -40,7 +40,7 @@ const SearchForm = () => {
     );
 
     return (
-        <Form>
+        <Form onSubmit={getSearchResult}>
             <SearchInput
                 ref={inputRef}
                 type="text"
@@ -49,14 +49,14 @@ const SearchForm = () => {
                 onChange={searchInputChange}
             />
             {searchInput ? (
-                <CloseButton onClick={clearSearchInput}>
+                <CloseButton type="button" onClick={clearSearchInput}>
                     <Icon src={close} />
                 </CloseButton>
             ) : (
-                <CloseButton />
+                <CloseButton type="button" />
             )}
 
-            <SubmitButton onClick={getSearchResult}>
+            <SubmitButton>
                 <Icon src={search} />
             </SubmitButton>
         </Form>

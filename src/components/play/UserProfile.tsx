@@ -34,12 +34,12 @@ const ProfileImg = styled.img`
 `;
 
 const Name = styled.p`
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     margin-bottom: 4px;
 `;
 
 const SubscriptionCount = styled.p`
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     color: ${(props) => props.theme.colors.darkGray};
 `;
 
@@ -49,6 +49,6 @@ const SubscriptionButton = styled.button`
 
     background: #c50000;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 0.875rem;
+    padding: 8px 18px;
+    font-size: 0.75rem;
 `;

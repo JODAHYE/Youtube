@@ -29,7 +29,7 @@ const MainVideoList = () => {
     return (
         <Wrap isOpenMenu={isOpenMenu}>
             {data?.data.items.map((video, i) => (
-                <MainViedoItem key={video.id + i} video={video} />
+                <MainViedoItem key={video.id} video={video} />
             ))}
         </Wrap>
     );

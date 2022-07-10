@@ -15,7 +15,7 @@ export type TopLevelCommentSnippetType = {
     viewerRating: string;
 };
 
-type snippetType = {
+export type snippetType = {
     canReply: boolean;
     isPublic: boolean;
     topLevelComment: {

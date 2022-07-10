@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 
-import { CommentType } from "../../states/commentType";
+// import { CommentType } from "../../states/commentType";
 import CommentItem from "./CommentItem";
 import { commentState } from "../../states/comment";
 
-type DataType = {
-    items: CommentType[];
-};
+// type DataType = {
+//     items: CommentType[];
+// };
 
 const CommentList = () => {
-    const commentListValue = useRecoilValue<DataType>(commentState);
+    // const commentListValue = useRecoilValue<DataType>(commentState);
+    const commentListValue = useRecoilValue<any>(commentState);
 
     return (
         <Wrap>

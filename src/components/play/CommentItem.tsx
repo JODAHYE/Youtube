@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { TopLevelCommentSnippetType } from "../../states/commentType";
+// import { TopLevelCommentSnippetType } from "../../states/commentType";
 
 type StyledType = {
     time: string;
 };
 
-const CommentItem = ({ comment }: { comment: TopLevelCommentSnippetType }) => {
+const CommentItem = ({ comment }: { comment: any }) => {
     return (
         <Wrap>
             <ProfileImg src={comment.authorProfileImageUrl} />

@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useQuery } from "react-query";
+import React from "react";
 import { useRecoilValue } from "recoil";
-import VideoAPI from "../../lib/api/VideoAPI";
-import { playChannelId } from "../../states/filter";
 import styled from "styled-components";
 import { SearchVideoType } from "../../states/videoType";
 import PlaySubItem from "./PlaySubItem";

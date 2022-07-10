@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { useQuery } from "react-query";
+import React from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 
 import { CommentType } from "../../states/commentType";
-import CommentAPI from "../../lib/api/CommentAPI";
 import CommentItem from "./CommentItem";
 import { commentState } from "../../states/comment";
 

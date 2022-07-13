@@ -18,8 +18,8 @@ function App() {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route path="results*" element={<Search />} />
-                    <Route path="play*" element={<Play />} />
+                    <Route path="/results*" element={<Search />} />
+                    <Route path="/play*" element={<Play />} />
                 </Routes>
             </ThemeProvider>
         </RecoilRoot>

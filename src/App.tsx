@@ -9,6 +9,7 @@ import Main from "./pages/Main";
 import Search from "./pages/Search";
 import GlobalStyle from "./style/GlobalStyle";
 import { theme } from "./style/theme";
+import Test from "./pages/Test";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/" element={<Main />} />
                     <Route path="/results*" element={<Search />} />
                     <Route path="/play*" element={<Play />} />
+                    <Route path="/test" element={<Test />} />
                 </Routes>
             </ThemeProvider>
         </RecoilRoot>

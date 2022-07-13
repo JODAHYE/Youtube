@@ -7,8 +7,7 @@ export default class CommentAPI {
                 part: "snippet",
                 videoId: videoId,
                 maxResults: "2",
-                // key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
-                key: "AIzaSyBpfyYJBX0eUtQOgvwlsvqst4e68fW_sLM",
+                key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });
     }

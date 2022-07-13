@@ -7,8 +7,7 @@ export default class VideoAPI {
                 part: "snippet",
                 playlistId: playListId,
                 maxResults: "10",
-                // key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
-                key: "AIzaSyBpfyYJBX0eUtQOgvwlsvqst4e68fW_sLM",
+                key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });
     }
@@ -19,8 +18,7 @@ export default class VideoAPI {
                 part: "snippet",
                 q: searchValue,
                 maxResults: "10",
-                // key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
-                key: "AIzaSyBpfyYJBX0eUtQOgvwlsvqst4e68fW_sLM",
+                key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });
     }
@@ -31,8 +29,7 @@ export default class VideoAPI {
                 part: "snippet",
                 q: channelId,
                 maxResults: "10",
-                // key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
-                key: "AIzaSyBpfyYJBX0eUtQOgvwlsvqst4e68fW_sLM",
+                key: `${process.env.REACT_APP_YOUTUBE_API_KEY}`,
             },
         });
     }
